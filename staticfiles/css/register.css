@@ -1,0 +1,306 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #322761;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.line div {
+  visibility: hidden;
+}
+hr {
+  opacity: 0.3;
+  color: #919191d2;
+}
+
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "ExemplarPro-Regular";
+  src: url("../fonts/ExemplarPro-Regular.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Montas-Light";
+  src: url("../fonts/Montas-Light.woff2");
+}
+.page-content {
+  --main-color: #322761;
+  --text-color: #e1dae4;
+  --border-color-100: #f9f5f2;
+  --accent-color: #5e0e0e;
+
+  --header-font: "ExemplarPro-Regular";
+  --text-font: "Montas-Light";
+}
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/*change color of text highlight*/
+::-moz-selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+/****************************************** register-container **************************************/
+#register-container {
+  margin-top: 20%;
+}
+#register-intro {
+  margin: 3%;
+}
+#register-container #logo_ {
+  width: 12%;
+  margin-bottom: 5%;
+}
+#register-container .card {
+  background: var(--text-color);
+  margin-top: 2%;
+  padding: 1%;
+}
+#register-container h1 {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--header-font);
+  font-size: 4.2vh;
+  margin-bottom: 2px;
+}
+#register-container p {
+  color: #333;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2.3vh;
+  margin-bottom: 7%;
+  line-height: 1.3;
+}
+#line {
+  margin-top: -5%;
+  margin-bottom: 6%;
+  color: var(--main-color);
+  opacity: 0.45;
+}
+
+/* label  */
+#register-container form label {
+  color: #333;
+  letter-spacing: 1px;
+  font-family: var(--header-font);
+  font-size: 2.1vh;
+}
+#register-container #form-group a {
+  float: right;
+  font-size: 1.9vh;
+  color: #333;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+#register-container #form-group a span {
+  border-bottom: 1px solid var(--main-color);
+}
+.field-icon {
+  float: right;
+  margin-left: -20px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+  color: var(--text-color);
+}
+.fa-eye:before,
+.fa-eye-slash:before {
+  margin-left: -20px;
+}
+/* input */
+#register-container form input {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+  border: transparent;
+  background: var(--main-color);
+}
+#register-container form input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #f6f6f669;
+  color: var(--text-color);
+}
+#register-container form input::placeholder {
+  color: #f6f6f6c2;
+  font-size: 1.9vh;
+}
+#submit_btn {
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  background: #3e3c8d;
+  transition: all 0.5s ease-in-out;
+}
+#submit_btn:hover {
+  background: #3d3c8d87;
+  transition: all 0.5s ease-in-out;
+}
+
+#register-container h6 {
+  color: var(--border-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.9vh;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 0%;
+}
+#register-container h6 a {
+  color: #333;
+  font-family: var(--header-font);
+  border-bottom: 1px solid #333;
+}
+
+/****************************************** Footer-Section ************************************/
+footer {
+  margin-top: 40%;
+}
+footer p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.9vh;
+  text-align: center;
+}
+
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    display: none;
+  }
+}
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body {
+    display: none;
+  }
+}
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  body {
+    display: none;
+  }
+}
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+  /************** register-container *****************/
+  #register-container {
+    margin-top: 5%;
+  }
+  #register-intro {
+    margin: 3%;
+  }
+  #register-container #logo_ {
+    width: 4%;
+    margin-bottom: 2%;
+  }
+  #register-container .card {
+    margin-top: 2%;
+    width: 65%;
+  }
+  #register-container h1 {
+    font-size: 4.2vh;
+    margin-bottom: 2px;
+  }
+  #register-container p {
+    font-size: 2.3vh;
+    margin-bottom: 6%;
+  }
+  #line {
+    margin-top: -5%;
+    margin-bottom: 4%;
+  }
+
+  /* label  */
+  #register-container form label {
+    font-size: 2.1vh;
+  }
+  #register-container #form-group a {
+    font-size: 1.9vh;
+  }
+
+  /* input */
+  #register-container form input {
+    font-size: 1.8vh;
+  }
+  #register-container form input::placeholder {
+    font-size: 1.9vh;
+  }
+  #submit_btn {
+    font-size: 2.2vh;
+  }
+
+  #register-container h6 {
+    font-size: 1.9vh;
+    margin-top: 3%;
+    margin-bottom: 0%;
+  }
+
+  /* footer */
+  footer {
+    margin-top: 8%;
+  }
+  footer p {
+    font-size: 1.9vh;
+  }
+}
+
+/************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
+@media (min-width: 2000px) {
+  body {
+    display: none;
+  }
+}

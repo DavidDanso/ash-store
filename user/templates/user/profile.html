@@ -1,0 +1,244 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Discover the latest trends and deals at Ash Store - Your one-stop destination for fashion, accessories, and more."
+    />
+    <meta
+      name="keywords"
+      content="Ash Store, fashion, accessories, online shopping, clothing, discounts, deals"
+    />
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>Ash Store | Profile Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/profile.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/profile.css' %}" />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+
+    <script type="text/javascript">
+      var user = "{{request.user}}";
+
+      function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getToken("csrftoken");
+    </script>
+    <!--  -->
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    {% include 'store/nav.html' %}
+    <!-- end nav -->
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Text ===============================-->
+        <div id="hero">
+          <div class="container">
+            <div class="hero-intro">
+              <div class="hero--header">
+                <h1>
+                  {{profile.name}}
+                  <span
+                    ><button
+                      type="button"
+                      class="btn"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                    >
+                      Profile Settings
+                    </button></span
+                  >
+                </h1>
+
+                <hr />
+              </div>
+              <!-- end hero--header -->
+
+              <div class="hero--stats">
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <h6>
+                      Joined: <span>{{request.user.date_joined|date}}</span>
+                    </h6>
+                    <h5>
+                      Username: <span>{{request.user.profile.username}}</span>
+                    </h5>
+                    <h5>Full name: <span>{{profile.name}}</span></h5>
+                    <h5>Email: <span>{{profile.email}}</span></h5>
+                  </div>
+                  <!-- end col -->
+
+                  <div class="col-md-8">
+                    <img
+                      src="{% static '/images/avatar-default.PNG' %}"
+                      id="user--img"
+                      class="img-fluid"
+                      alt="user--img"
+                    />
+                  </div>
+                  <!-- end col -->
+                </div>
+                <!-- end row -->
+              </div>
+              <!-- end hero--stats -->
+            </div>
+            <!-- End hero-intro -->
+          </div>
+          <!-- End hero -->
+        </div>
+        <!-- End hero -->
+
+        <!--=========================================== Profile-Settings--modal ===============================-->
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" id="staticBackdropLabel">
+                  Profile Settings
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <!-- end modal-header -->
+              <div class="modal-body">
+                <div class="card">
+                  <div class="card-body">
+                    <h6>update your profile settings here</h6>
+                    <!--  -->
+                    <form class="row g-3" method="POST">
+                      {% csrf_token %}
+                      <div class="col-md-12">
+                        <label for="inputFullname" class="form-label"
+                          >Full Name</label
+                        >
+                        {{form.name}}
+                      </div>
+                      <!-- end fullname -->
+
+                      <div class="col-md-6">
+                        <label for="inputusername" class="form-label"
+                          >Username</label
+                        >
+                        {{form.username}}
+                      </div>
+                      <!-- end username -->
+
+                      <div class="col-md-6">
+                        <label for="inputEmail" class="form-label">Email</label>
+                        {{form.email}}
+                      </div>
+                      <!-- end col -->
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary">
+                          Update Profile
+                        </button>
+                      </div>
+                      <!-- end modal-footer -->
+                    </form>
+                    <!-- end form -->
+                  </div>
+                  <!-- end card-body -->
+                </div>
+                <!-- end card -->
+              </div>
+              <!-- end modal-body -->
+            </div>
+            <!-- end modal-content -->
+          </div>
+          <!-- end modal-dialog -->
+        </div>
+        <!-- end movie--cards -->
+
+        <!--=========================================== Footer-Text ===============================-->
+        <footer>
+          <hr />
+          <p>ash.store ©2023 | all rights reserved</p>
+        </footer>
+
+        <!-- end footer -->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/profile.js' %}"></script>
+  </body>
+</html>

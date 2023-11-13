@@ -1,0 +1,441 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #322761;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.line div {
+  visibility: hidden;
+}
+hr {
+  opacity: 0.3;
+  color: #919191d2;
+}
+
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "ExemplarPro-Regular";
+  src: url("../fonts/ExemplarPro-Regular.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Montas-Light";
+  src: url("../fonts/Montas-Light.woff2");
+}
+.page-content {
+  --main-color: #322761;
+  --text-color: #e1dae4;
+  --border-color-100: #f9f5f2;
+  --accent-color: #5e0e0e;
+
+  --header-font: "ExemplarPro-Regular";
+  --text-font: "Montas-Light";
+}
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/*change color of text highlight*/
+::-moz-selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/****************************************** NAVIGATION ************************************/
+#mainNav {
+  transform: translateY(0);
+  transition: padding-top 0.3s, padding-bottom 0.3s;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: var(--main-color);
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 9;
+  width: 100vw;
+  border-bottom: 1px solid #91919172;
+}
+#logo {
+  width: 30px;
+}
+.navbar-toggler {
+  position: absolute;
+  width: 40px;
+  top: 16px;
+  right: 30px;
+  padding: 5px;
+  cursor: pointer;
+  border: 0;
+  z-index: 1;
+}
+.navbar-toggler span {
+  display: block;
+  background: var(--text-color);
+  width: 30px;
+  height: 1px;
+  transition: 300ms linear all;
+}
+.navbar-toggler span:nth-child(1) {
+  width: 20px;
+  margin-left: 20px;
+}
+.navbar-toggler span:nth-child(2) {
+  width: 20px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.navbar-toggler span:nth-child(3) {
+  width: 20px;
+}
+.navbar-toggler:hover span:nth-child(1) {
+  width: 32px;
+  margin-left: 0%;
+}
+.navbar-toggler:hover span:nth-child(2) {
+  width: 32px;
+}
+.navbar-toggler:hover span:nth-child(3) {
+  width: 32px;
+  margin-left: 0%;
+}
+#mainNav .nav-link,
+#mainNav .navbar-text {
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  line-height: 1.2;
+  margin-bottom: -2%;
+}
+#mainNav .nav-link:hover,
+#mainNav .navbar-text:hover {
+  color: #919191;
+}
+.navbar--bar {
+  color: #919191;
+  font-size: 2.5vh;
+}
+
+/* user avatar */
+#profile_img {
+  width: 35px;
+}
+#mainNav small {
+  font-size: 1.8vh;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+
+/****************************************** Hero-Section ************************************/
+#hero {
+  margin-top: 25%;
+}
+.hero-intro {
+  margin: 3%;
+}
+.hero-intro h1 {
+  font-size: 5vh;
+  font-family: var(--header-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 3%;
+}
+.hero-intro p {
+  font-size: 2.5vh;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  line-height: 1.3;
+  margin-bottom: 3%;
+}
+
+/****************************************** Products-Section ************************************/
+#products {
+  margin-top: 8%;
+}
+.products-intro {
+  margin: 3%;
+}
+.products-intro .card {
+  background: var(--border-color-100);
+  border: none;
+  margin-bottom: 5%;
+}
+.products-intro .card-body {
+  background-image: url("../images/frame.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 5%;
+}
+.product--img {
+  width: 65%;
+}
+.products-intro h2 {
+  font-size: 2.7vh;
+  font-family: var(--header-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  margin-bottom: 5%;
+  text-align: center;
+}
+.products-intro h6 {
+  font-size: 2.5vh;
+  font-family: var(--text-font);
+  color: var(--accent-color);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.products-intro button {
+  font-size: 2.5vh;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  background: var(--main-color);
+  border-radius: 25px;
+  padding: 6px 28px;
+  margin-top: 6%;
+  margin-bottom: 5%;
+  transition: all 0.2s ease-in-out;
+}
+.products-intro button:hover {
+  background: #3e3c8d;
+  transition: all 0.2s ease-in-out;
+  color: var(--text-color);
+}
+.products-intro .cart--img {
+  width: 20px;
+  margin-right: 6px;
+  vertical-align: middle;
+  margin-top: 2.3%;
+}
+
+/****************************************** Footer-Section ************************************/
+footer {
+  margin-top: 20%;
+}
+footer p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.9vh;
+  text-align: center;
+}
+
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+  #mainNav .navbar-collapse {
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+  #mainNav .nav-item {
+    display: none;
+  }
+  #mobile--cart {
+    position: absolute;
+    left: 65%;
+    top: 20px;
+  }
+  #mobile--cart .cart--img {
+    width: 20px;
+  }
+  #mainNav sup {
+    font-size: 1.8vh;
+    font-family: var(--text-font);
+    color: var(--text-color);
+  }
+  #mainNav .navbar-text .cart--img,
+  #mainNav .navbar-text sup {
+    display: none;
+  }
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    display: none;
+  }
+}
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body {
+    display: none;
+  }
+}
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  body {
+    display: none;
+  }
+}
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+  /****** nav-Section ******/
+  #mainNav {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  #logo {
+    width: 35px;
+    height: auto;
+    margin-left: 0%;
+  }
+  #mainNav .nav-item {
+    font-size: 2.5vh;
+    font-family: var(--text-font);
+    color: var(--text-color);
+    letter-spacing: 1px;
+    margin-left: 5%;
+  }
+  #mainNav .nav-link,
+  #mainNav .navbar-text {
+    font-size: 1.8vh;
+    letter-spacing: 1px;
+    margin-bottom: 0%;
+  }
+  #mainNav .nav-link span {
+    border-bottom: 1px solid var(--text-color);
+  }
+  .navbar--bar {
+    color: #919191;
+    font-size: 2.5vh;
+    margin: 6px;
+  }
+
+  #mainNav .cart--img {
+    width: 20px;
+    margin-top: -2%;
+  }
+  #mainNav sup {
+    font-size: 1.8vh;
+    font-family: var(--text-font);
+    color: var(--text-color);
+  }
+
+  #mobile--cart {
+    display: none;
+  }
+
+  /************** hero-section *****************/
+  #hero {
+    margin-top: 11%;
+  }
+  .hero-intro {
+    margin: 3%;
+  }
+  .hero-intro h1 {
+    font-size: 10vh;
+    margin-bottom: 3%;
+  }
+  .hero-intro p {
+    font-size: 2.8vh;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    margin-bottom: 3%;
+  }
+
+  /************** products-section *****************/
+  #products {
+    margin-top: 3%;
+  }
+  .products-intro {
+    margin: 3%;
+  }
+  .products-intro .card-body {
+    margin: 4%;
+  }
+  .product--img {
+    width: 50%;
+  }
+  .products-intro h2 {
+    font-size: 2.8vh;
+    margin-bottom: 5%;
+  }
+  .products-intro h6 {
+    font-size: 2.6vh;
+  }
+
+  .products-intro button {
+    font-size: 2.3vh;
+    padding: 4px 25px;
+    margin-top: 8%;
+    margin-bottom: 2%;
+  }
+  .products-intro button:hover {
+    background: #3e3c8d;
+    transition: all 0.2s ease-in-out;
+    color: var(--text-color);
+  }
+  .products-intro .cart--img {
+    width: 16px;
+    margin-right: 6px;
+    margin-top: 3.2%;
+  }
+
+  /* footer */
+  footer {
+    margin-top: 4%;
+  }
+  footer p {
+    font-size: 1.9vh;
+  }
+}
+
+/************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
+@media (min-width: 2000px) {
+  body {
+    display: none;
+  }
+}

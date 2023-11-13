@@ -1,0 +1,398 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Discover the latest trends and deals at Ash Store - Your one-stop destination for fashion, accessories, and more."
+    />
+    <meta
+      name="keywords"
+      content="Ash Store, fashion, accessories, online shopping, clothing, discounts, deals"
+    />
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>Ash Store | Checkout Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/checkout.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/checkout.css' %}" />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+    <!--  -->
+    <script type="text/javascript">
+      var user = "{{request.user}}";
+
+      function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getToken("csrftoken");
+    </script>
+    <!--  -->
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Text ===============================-->
+        <div id="hero">
+          <div class="container">
+            <div class="hero-intro">
+              <div class="row">
+                <div class="col-md-6 order-md-1 order-2" id="order--details">
+                  <nav
+                    style="--bs-breadcrumb-divider: '>'"
+                    aria-label="breadcrumb"
+                  >
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="{% url 'cart' %}">cart</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        checkout
+                      </li>
+                    </ol>
+                  </nav>
+                  <!-- end breadcrumb -->
+
+                  <form id="form">
+                    {% csrf_token %}
+                    <script src="https://js.paystack.co/v1/inline.js"></script>
+                    <div class="card" id="order--card">
+                      <div class="card-body">
+                        <div class="row mb-3">
+                          <label
+                            for="inputFullName"
+                            class="col-sm-2 col-form-label"
+                            >Name:</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="name"
+                              id="inputFullName"
+                            />
+                          </div>
+                        </div>
+                        <!-- end name -->
+
+                        <div class="row mb-3">
+                          <label
+                            for="inputEmail"
+                            class="col-sm-2 col-form-label"
+                            >Email:</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="email"
+                              name="email"
+                              class="form-control"
+                              id="inputEmail"
+                            />
+                          </div>
+                        </div>
+                        <!-- end email -->
+
+                        <div class="row mb-3">
+                          <label
+                            for="inputAddress"
+                            class="col-sm-2 col-form-label"
+                            >Ship To:</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              name="address"
+                              class="form-control"
+                              id="inputAddress"
+                            />
+                          </div>
+                        </div>
+                        <!-- end ship to -->
+
+                        <div class="row mb-3">
+                          <label for="inputCity" class="col-sm-2 col-form-label"
+                            >City:</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              name="city"
+                              class="form-control"
+                              id="inputCity"
+                            />
+                          </div>
+                        </div>
+                        <!-- end city -->
+
+                        <div class="row mb-3">
+                          <label
+                            for="inputZipCode"
+                            class="col-sm-2 col-form-label"
+                            >Zip Code:</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="number"
+                              name="zipcode"
+                              class="form-control"
+                              id="inputZipCode"
+                            />
+                          </div>
+                        </div>
+                        <!-- end zip code -->
+                      </div>
+                      <!-- end card-body -->
+                    </div>
+                    <!-- end order--card -->
+
+                    <!-- shipping method -->
+                    <div id="shipping--method">
+                      <h6>Shipping method</h6>
+
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value=""
+                              id="flexCheckIndeterminate"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexCheckIndeterminate"
+                            >
+                              Free Worldwide shipping
+                            </label>
+                          </div>
+                          <!-- end form-check -->
+                        </div>
+                        <!-- end card-body -->
+                      </div>
+                      <!-- end card -->
+                    </div>
+                    <!-- end shipping--method -->
+
+                    <a href="{% url 'products' %}" class="btn">
+                      <span>return to products</span>
+                    </a>
+
+                    <input
+                      type="submit"
+                      id="make--payment"
+                      name="checkoutBtn"
+                      class="btn checkout--btn"
+                      value="Continue to payment"
+                      onclick="payWithPaystack()"
+                    />
+                  </form>
+                </div>
+                <!-- end order--details -->
+
+                <div class="col-md-6 order-md-2 order-1" id="order--products">
+                  {% for item in items %}
+                  <div id="product--info">
+                    <h3>
+                      <img
+                        src="{{item.product.imageURL}}"
+                        id="product--img"
+                        class="img-fluid"
+                        alt="product--img"
+                      />
+                      {{item.product.name}}
+                    </h3>
+                  </div>
+                  <!-- end product--info -->
+
+                  <div id="info">
+                    <h6>
+                      ${{item.product.price|floatformat:2}}
+                      <span class="badge">{{item.quantity}}</span>
+                    </h6>
+                  </div>
+                  <!-- end info -->
+                  <hr />
+                  {% endfor%}
+
+                  <h4>
+                    Subtotal:
+                    <span>${{order.get_cart_total|floatformat:2}}</span>
+                  </h4>
+                  <h4>Shipping: <span>free</span></h4>
+                  <hr />
+
+                  <h5>
+                    Total
+                    <span>${{order.get_cart_total|floatformat:2}}</span>
+                  </h5>
+                </div>
+                <!-- end order--products -->
+              </div>
+              <!-- end row -->
+            </div>
+            <!-- End hero-intro -->
+          </div>
+          <!-- End hero -->
+        </div>
+        <!-- End hero -->
+
+        <!--=========================================== Footer-Text ===============================-->
+        <footer>
+          <hr />
+          <p>ash.store ©2023 | all rights reserved</p>
+        </footer>
+
+        <!-- end footer -->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <!--  -->
+    <script>
+      // paystack integration
+      function payWithPaystack() {
+        var handler = PaystackPop.setup({
+          key: "{{ paystack_public_key }}",
+          email: "{{ customer_mail }}",
+          amount: "{{ghs_price}}",
+          currency: "GHS", // Replace with your preferred currency
+          metadata: {
+            order_id: "{{ order.transaction_id }}", // Add the order id ID as metadata (It can be cart_id for e-commerce)
+            user_id: "{{ request.user.id }}", // Add the user ID as metadata
+          },
+          // Generate a unique reference dynamically
+          callback: function (response) {
+            // Handle the callback response
+            if (response.status === "success") {
+              // Payment successful
+              // Redirect the user to a success page or perform any necessary actions
+              window.location.href = "{% url 'products' %}";
+            } else {
+              // Payment failed
+              // Redirect the user to a failure page or display an error message
+              alert("There was an error processing your purchase ❌");
+              window.location.href = "{% url 'checkout' %}";
+            }
+          },
+        });
+        handler.openIframe();
+      }
+
+      //
+      var form = document.getElementById("form");
+
+      var total = "{{order.get_cart_total}}";
+      var shipping = "True";
+
+      //
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        console.log("form submitted...");
+      });
+
+      //
+      document
+        .getElementById("make--payment")
+        .addEventListener("click", function (e) {
+          submitFormData();
+        });
+
+      //
+      function submitFormData() {
+        let shippingInfo = {
+          name: null,
+          email: null,
+          total: total,
+          address: null,
+          city: null,
+          zipcode: null,
+        };
+
+        if (shipping == "True") {
+          shippingInfo.name = form.name.value;
+          shippingInfo.email = form.email.value;
+          shippingInfo.address = form.address.value;
+          shippingInfo.city = form.city.value;
+          shippingInfo.zipcode = form.zipcode.value;
+        }
+
+        var url = "/process_order";
+
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrftoken,
+          },
+          body: JSON.stringify({ shipping: shippingInfo }),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Success:", data);
+          });
+      }
+    </script>
+  </body>
+</html>
