@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=True)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ash-store-ba8574479ad5.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ash-store-aa8f1114fe61.herokuapp.com']
 
 
 # Application definition
@@ -169,5 +169,5 @@ AWS_S3_CUSTOM_DOMAIN = config('AWS_S3_CUSTOM_DOMAIN')
 
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = ['https://ash-store-ba8574479ad5.herokuapp.com']
-CSRF_TRUSTED_ORIGINS = ['https://ash-store-ba8574479ad5.herokuapp.com']
+CORS_ALLOWED_ORIGINS = ['https://ash-store-aa8f1114fe61.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://ash-store-aa8f1114fe61.herokuapp.com']
